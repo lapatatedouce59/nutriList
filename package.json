@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "openfoodfacts-nodejs": "^0.1.0"
+  }
+}

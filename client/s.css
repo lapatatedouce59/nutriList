@@ -1,0 +1,48 @@
+header{
+    width: 100%;
+    background-color: #201F24;
+    display: inline-flex;
+    padding: 20px;
+}
+
+body{
+    margin: 0px;
+}
+
+#next-to-header{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 20px;
+    vertical-align: auto;
+}
+
+nav>ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+nav>ul>li {
+    display: inline;
+    float: left;
+}
+
+nav>ul>li>button{
+    display: block;
+    color: white;
+    background: transparent;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    width: 200px;
+    font-size: 20px;
+    transition: 300ms;
+}
+
+nav>ul>li>button:hover{
+    width: 250px;
+    background-color: #161616;
+    transition: 300ms;
+}
