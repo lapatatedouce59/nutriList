@@ -13,7 +13,11 @@
                 document.location.href='https://discord.com/api/oauth2/authorize?client_id=729759463149535313&redirect_uri=http%3A%2F%2F127.0.0.1%3A5500%2Fclient%2FdiscordCon.html&response_type=token&scope=identify'
             } else {
                 document.cookie='discord_token='+URL_data.access_token+'; expires='+URL_data.expires_in+';'
-                document.location.href='./login.html'
+                
+                res.json().then(usr => {
+                    localStorage.setItem('username',usr.username)
+                    document.location.href='./login.html'
+                })
             }
         })
 </script>
