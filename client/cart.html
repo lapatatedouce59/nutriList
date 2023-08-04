@@ -23,7 +23,33 @@
             <li><button id="navMenus">Mes menus</button></li>
         </ul>
     </nav>
-    
+    <h1 id="notLoggedText">Vous n'êtes pas connecté!</h1>
+    <div style="margin: 10px;">
+        <fieldset style="width: fit-content; border: black solid 2px; border-radius: 10px;">
+            <legend>Ajouter un article</legend>
+            <table id="addArticleTable">
+                <tr>
+                    <td style="font-size: 20px;">Nom de l'article:</td><td><input type="text" class="coolInput" id="articleName"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 20px;">Notes éventuelles:</td><td><input type="text" class="coolInput" id="articleNote"></td>
+                </tr>
+            </table>
+            <button id="btnAdd" style="padding: 14px 16px; width: 100%; background-color: #04AA6D; color: white; font-size: 20px; margin-top: 20px;">Ajouter un article</button>
+        </fieldset>
+    </div>
+    <div style="margin: 10px;" id="cartDiv">
+        <fieldset style="width: fit-content; border: black solid 2px; border-radius: 10px;">
+            <legend>Votre liste</legend>
+            <table style="font-size: 20px; column-gap: 100px; width: 1000px;" id="cartTable">
+                <tr>
+                    <td>Pates bolo</td>
+                    <td>note à la con</td>
+                    <td class="cartColums"><button id="btnDelete3" class="cartDeleteBtn"></button></td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
     <script src="./scripts/com.js"></script>
     <script src="./scripts/cart.js"></script>
 </body>

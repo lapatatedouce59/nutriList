@@ -46,3 +46,24 @@ nav>ul>li>button:hover{
     background-color: #161616;
     transition: 300ms;
 }
+
+.coolInput{
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 20px;
+    transition: 500ms;
+}
+
+.coolInput:focus{
+    border-radius: 5px;
+    transition: 500ms;
+}
+
+.cartColums{
+    width: 40px;
+}
+
+.cartDeleteBtn{
+    padding: 14px 16px; width: 22%; background-color: #aa0404; color: white; font-size: 20px; height: 10px;
+}

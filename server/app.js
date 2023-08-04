@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const fs = require('fs')
 
 const api = require('./server.json')
 let tokenWhiteList=[]
@@ -61,17 +62,45 @@ app.post("/login", cors(), (req, res)=>{
     }
 })
 
-app.get("/cart", cors(), (req, res)=>{
-    if(req.body){
-        let {name} = req.body
-        if(name){
-            res.status(200).send('CA MARCHE, '+name+' Votre lieu: '+params.lieu)
-            console.log('uuid: '+headers.uuid)
+let articleIncrement = api.cart.length
+
+app.post("/cart", cors(), (req, res)=>{
+    let token = req.body.token
+    if(token){
+        if(tokenWhiteList.includes(token)){
+            if(req.body.article){
+                let sentObj = req.body.article
+                let articleTitle = sentObj.title
+                let articleNote = sentObj.note
+                if(articleTitle === '[aucun titre]'){
+                    res.status(400).set('Retry-After','Providing a not empty title.').send('Empty article title.')
+                } else {
+                    articleIncrement++;
+                    api.cart.push( {title: articleTitle, note: articleNote, id: articleIncrement} )
+                    fs.writeFileSync('./server/server.json', JSON.stringify(api, null, 2));
+                    res.status(201).send( {api:api, response:`The article ${articleTitle} has been created sucessfully with id ${articleIncrement}. There is now ${api.cart.length} articles in the cart.`} )
+                }
+            } else {
+                res.status(400).set('Retry-After','Providing a article Object (title,note).').send('No article object.')
+            }
         } else {
-            res.status(400).send('Name has\'nt been defined.')
+            res.status(401).set('Retry-After','Sending a valid token (whitelisted)').send('Unauthorised token.')
         }
     } else {
-        res.status(400).send('You did\'nt put a body.')
+        res.status(400).set('Retry-After','Sending the token via body attribute "token"').send('Missing token.')
+    }
+})
+
+app.put("/cart", cors(), (req, res)=>{
+    let token = req.body.token
+    if(token){
+        if(tokenWhiteList.includes(token)){
+            res.status(200).send({api:api, response:`Sent API.`})
+        } else {
+            res.status(401).set('Retry-After','Sending a valid token (whitelisted)').send('Unauthorised token.')
+        }
+    } else {
+        res.status(400).set('Retry-After','Sending the token via body attribute "token"').send('Missing token.')
     }
 })
 

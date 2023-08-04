@@ -1,8 +1,25 @@
 {
-    "cart":{
-        "pates":true
+  "cart": [
+    {
+      "title": "pates de merde",
+      "note": "note ahahaha",
+      "id": 1
     },
-    "codeurls":[
-
-    ]
+    {
+      "title": "pipi",
+      "note": "[aucunes notes]",
+      "id": 2
+    },
+    {
+      "title": "caca",
+      "note": "prout",
+      "id": 3
+    },
+    {
+      "title": "caca",
+      "note": "prout",
+      "id": 4
+    }
+  ],
+  "codeurls": []
 }
